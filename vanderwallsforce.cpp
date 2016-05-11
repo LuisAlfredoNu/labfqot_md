@@ -15,7 +15,7 @@ VanDerWallsForce::VanDerWallsForce(Particles &part) {
 }
 
 void VanDerWallsForce::AddForces(void) {
-   int n=p->N();
+   int n=p->N(); // Number of particles 
    for ( int i=0 ; i<n ; ++i ) {
       for ( int j=(i+1) ; j<n ; ++j ) {
          ComputeForce(p->x[i],p->x[j],p->a[i],p->a[j]);
@@ -43,7 +43,19 @@ void VanDerWallsForce::ComputeForce(vector<double> &x1,vector<double> &x2,\
    double D=8.37891e-06;
    double alpha=-6.12094e00;
    double r0=3.06e00; //in Angstroms
-   //*
+   
+	// Calculus of force F
+
+
+	double exponential=exp[-alpha*(r-r0)];
+	double constant=(-2*alpha*D*exponential)/r;
+	for( i=0; i<3;++i){
+		a1[i]= constant*exponential*x12[i] - constant*x12[i];
+		a2[i]= -1 * a1[i] ;
+	 }
+	
+	
+	/*
    double oor=1.0e0/r;
    for ( int i=0 ; i<3 ; ++i ) { x12[i]*=oor; }
    double oor4=1.0e0;
