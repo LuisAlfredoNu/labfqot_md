@@ -1,0 +1,113 @@
+\documentclass[8pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+ \title{Gradiente de U}
+ \author{Luis D. Conde Monroy}
+
+\begin{document}
+
+ \maketitle
+ 
+ \section{Función inicial}
+ \begin{equation}
+  U(\vec{|r|}) = D[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)}]
+ \end{equation}
+ donde:
+ \begin{equation}
+  \vec{|r|}= \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}
+ \end{equation}
+Si: 
+\\
+\begin{equation}
+\vec{F}= -\nabla U
+\end{equation}
+\\ 
+\begin{equation}
+\vec{F}= -\left(\frac{\partial  \hat{\textit{i}}}{\partial x_1} + \frac{\partial \hat{\textit{j}}}{\partial y_1} + \frac{\partial  \hat{\textit{k}}}{\partial z_1}\right) U(\vec{|r|})
+\end{equation}
+
+\section{Cálculo del gradiente} 
+
+Desarrollando $\nabla$ en $x_1$:
+
+\begin{equation}
+-\nabla_{x_1} = - \left\{ \frac{\partial \left[D \left(e^{-2\alpha(\vec{|r|}-r_0)} - 2e^{-\alpha(\vec{|r|}-r_0)} \right) \right]}{ \partial x_1} \right\} \hat{\textit{i}}
+\end{equation}
+\\
+\begin{equation}
+-\nabla_{x_1} = - \left\{   D \frac{\partial \left[e^{-2\alpha(\vec{|r|}-r_0) }\right]}{\partial x_1} 
+                          -2D \frac{\partial \left[e^{- \alpha(\vec{|r|}-r_0) }\right]}{\partial x_1} 
+                    \right\} \hat{\textit{i}}
+\end{equation}
+\\
+\begin{equation}
+-\nabla_{x_1} = - \left\{ D \left[e^{-2\alpha(\vec{|r|}-r_0)} \frac{\partial \left(-2\alpha(\vec{|r|}-r_0) \right)}{\partial x_1} \right] -2D \left[e^{-\alpha(\vec{|r|}-r_0)} \frac{\partial \left(-\alpha(\vec{|r|}-r_0) \right)}{\partial x_1} \right] \right\}\hat{\textit{i}}
+\end{equation}
+\\
+\begin{equation}
+-\nabla_{x_1} = - \left\{ -2\alpha De^{-2\alpha(\vec{|r|}-r_0)} \left[\frac{\partial(\vec{|r|}-r_0)}{\partial x_1} \right] +2\alpha De^{-\alpha(\vec{|r|}-r_0)} \left[\frac{\partial(\vec{|r|}-r_0)}{\partial x_1} \right] \right\} \hat{\textit{i}}
+\end{equation}
+\\
+\begin{eqnarray}
+-\nabla_{x_1} &=& - \left\{ -2\alpha De^{-2\alpha(\vec{|r|}-r_0)} \left[\frac{\partial \left((x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2 \right)^{1/2}}{\partial x_1} \right] \right. \nonumber\\
+&& \left. +2\alpha De^{-\alpha(\vec{|r|}-r_0)} \left[\frac{\partial \left((x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2 \right)^{1/2}}{\partial x_1} \right] \right\} \hat{\textit{i}}
+\end{eqnarray}
+\\
+\begin{equation}
+-\nabla_{x_1} = - \left\{ 2\alpha De^{-2\alpha(\vec{|r|}-r_0)} \left[\frac{(x_2-x_1)}{\vec{|r|}} \right] - 2\alpha De^{-\alpha(\vec{|r|}-r_0)} \left[\frac{(x_2-x_1}{\vec{|r|}} \right] \right\} \hat{\textit{i}}
+\end{equation}
+\\
+
+Finalmente, agruapando términos:
+
+\begin{equation}
+-\nabla_{x_1} = -2\alpha D \left(\frac{(x_2-x_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{i}}
+\end{equation}
+\\
+
+De manera natural, los gradientes respecto de $y_1$ y $z_1$:
+
+\begin{equation}
+-\nabla_{y_1} = -2\alpha D \left(\frac{(y_2-y_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{j}}
+\end{equation}
+\\
+\begin{equation}
+-\nabla_{z_1} = -2\alpha D \left(\frac{(z_2-z_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{k}}
+\end{equation}
+\\
+
+Por lo tanto:
+
+\begin{eqnarray}
+\vec{F} &=&  -2\alpha D \left(\frac{(x_2-x_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{i}} \nonumber\\
+&& - 2\alpha D \left(\frac{(y_2-y_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{j}} \nonumber\\
+&& - 2\alpha D \left(\frac{(z_2-z_1)}{\vec{|r|}} \right) \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] \hat{\textit{k}}
+\end{eqnarray}
+\\
+
+Reagrupando términos:
+
+\begin{equation}
+\vec{F}= \frac{-2\alpha D}{\vec{|r|}} \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] 
+( (x_2-x_1)\hat{\textit{i}} 
+     + (y_2-y_1)\hat{\textit{j}} 
+     + (z_2-z_1)\hat{\textit{k}} )
+\end{equation}
+\\
+\begin{equation}
+\vec{F}= \frac{-2\alpha D \vec{r}}{\vec{|r|}} \left[e^{-2\alpha(\vec{|r|}-r_0)} - e^{-\alpha(\vec{|r|}-r_0)} \right] 
+\end{equation}
+
+\vspace{2cm}
+
+\huge {Contribuition to Scientific Programing }
+
+\vspace{1cm}
+\Large {I  {\bf Luis Alfredo Nuñez-Meneses} add to code labfqot\_mb this way to calculate the force in file vanderwallsforce.cpp in the function "ComputeForce".} \\
+
+\it {I hope be a good addition to the code.}
+
+
+
+\end{document}
